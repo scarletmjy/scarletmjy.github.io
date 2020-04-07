@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/17/%E9%80%9A%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/17/%E9%80%9A%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/2.png">
 <meta property="article:published_time" content="2020-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-03T12:25:25.337Z">
+<meta property="article:modified_time" content="2020-04-07T03:32:36.971Z">
 <meta property="article:author" content="Scarlet">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -189,10 +189,8 @@
 
 <p>生成rsa密钥对。如果一路回车的话，密钥会存放在<code>C:\Users\&lt;用户名&gt;\.ssh</code>目录下，如图所示，红框框选中的id_rsa.pub就是生成的公钥，我们后面需要用到，它上面没有后缀的文件是私钥：</p>
 <center><img src="/2020/02/17/%E9%80%9A%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/1.png" class=""></center>
+2. 将公钥发送至跳板机，命令格式为：
 
-<ol start="2">
-<li>将公钥发送至跳板机，命令格式为：</li>
-</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
@@ -205,8 +203,9 @@
 <li>最后本地机尝试登录跳板机，成功！</li>
 </ol>
 <center><img src="/2020/02/17/%E9%80%9A%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/2.png" class=""></center>
+### 设置SSH隧道
 
-<h3 id="设置SSH隧道"><a href="#设置SSH隧道" class="headerlink" title="设置SSH隧道"></a>设置SSH隧道</h3><ol>
+<ol>
 <li>在本地cmd中输入：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L 6000:&lt;内网服务器ip&gt;:22 -p &lt;跳板机端口22&gt; username@&lt;跳板机ip&gt; -o TCPKeepAlive=yes</span><br></pre></td></tr></table></figure>
@@ -216,8 +215,8 @@
 </ol>
 <p>参考：</p>
 <ol>
-<li>windows配置免密登录linux：<a href="https://blog.csdn.net/qq_40451749/article/details/89348799" target="_blank" rel="noopener">https://blog.csdn.net/qq_40451749/article/details/89348799</a></li>
-<li>ssh隧道解决pycharm跨过跳板机连接服务器问题：<a href="https://blog.csdn.net/huangbx_tx/article/details/93339715" target="_blank" rel="noopener">https://blog.csdn.net/huangbx_tx/article/details/93339715</a></li>
+<li>[windows配置免密登录linux][<a href="https://blog.csdn.net/qq_40451749/article/details/89348799]" target="_blank" rel="noopener">https://blog.csdn.net/qq_40451749/article/details/89348799]</a></li>
+<li>[ssh隧道解决pycharm跨过跳板机连接服务器问题][<a href="https://blog.csdn.net/huangbx_tx/article/details/93339715]" target="_blank" rel="noopener">https://blog.csdn.net/huangbx_tx/article/details/93339715]</a></li>
 </ol>
 
       
@@ -372,7 +371,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置免密登录Linux跳板机"><span class="toc-number">1.</span> <span class="toc-text">配置免密登录Linux跳板机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置SSH隧道"><span class="toc-number">2.</span> <span class="toc-text">设置SSH隧道</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置免密登录Linux跳板机"><span class="toc-number">1.</span> <span class="toc-text">配置免密登录Linux跳板机</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -393,6 +392,26 @@
 
   
 
+
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+  var gitalk = new Gitalk({
+    clientID: '5c1761c9b9908f55ac9a',
+    clientSecret: '15685ea9d8a6502cba50a89bd5f3fdb4868f074c',
+    repo: 'https://github.com/scarletmjy/comments',
+    owner: 'scarletmjy',
+    admin: ['scarletmjy'],
+    id: 'Mon Feb 17 2020 00:00:00 GMT+0800',
+    distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container')
+}
+</script>
 
           </div>
         </div>
