@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="Scarlet&#39;s Homepage">
 <meta property="og:description" content="博客的基本信息，如站点名称、博主信息等基本上都可以在根目录下的_config.yml以及themes&#x2F;yilia&#x2F;_config.yml中完成，这里就不赘述了，下面介绍一些不太容易实现的配置（至少让我折腾了一会）。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/archives/undefined/1.png">
-<meta property="og:image" content="http://yoursite.com/archives/undefined/2.png">
+<meta property="og:image" content="http://yoursite.com/archives/f04dc526/1.png">
+<meta property="og:image" content="http://yoursite.com/archives/f04dc526/2.png">
 <meta property="article:published_time" content="2020-04-02T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-07T04:07:38.988Z">
+<meta property="article:modified_time" content="2020-04-07T04:24:37.577Z">
 <meta property="article:author" content="Scarlet">
 <meta property="article:tag" content="建站">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/archives/undefined/1.png">
+<meta name="twitter:image" content="http://yoursite.com/archives/f04dc526/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Scarlet&#39;s Homepage" type="application/atom+xml">
   
@@ -225,10 +225,10 @@
 
 
 <h3 id="6-更改代码块样式"><a href="#6-更改代码块样式" class="headerlink" title="6. 更改代码块样式"></a>6. 更改代码块样式</h3><p>打开<code>theme\yilia\source\main.0cf68a.css</code>，搜索 <code>.article-entry .highlight</code>,  定位到红框，调整代码块背景颜色</p>
-<center><img src="/archives/undefined/1.png" class=""></center>
+<center><img src="/archives/f04dc526/1.png" class=""></center>
 调整字体颜色：
 
-<center><img src="/archives/undefined/2.png" class=""></center>
+<center><img src="/archives/f04dc526/2.png" class=""></center>
 ### 7. 显示文章目录
 
 <p>在 <code>themes/yilia/_config.ym</code>中，将toc的值改为2。这样就可以根据你的md文件里的标题自动生成目录了：</p>
@@ -237,10 +237,20 @@
 
 
 <h3 id="8-添加Gitalk评论区（未配好）"><a href="#8-添加Gitalk评论区（未配好）" class="headerlink" title="8. 添加Gitalk评论区（未配好）"></a>8. 添加Gitalk评论区（未配好）</h3><p><a href="https://anyway1314.cn/post/2ee2703d.html" target="_blank" rel="noopener">参考博客</a></p>
-<h3 id="9-文章URL加密"><a href="#9-文章URL加密" class="headerlink" title="9. 文章URL加密"></a>9. 文章URL加密</h3><p>参考：**</p>
+<h3 id="9-文章URL加密"><a href="#9-文章URL加密" class="headerlink" title="9. 文章URL加密"></a>9. 文章URL加密</h3><p>用命令行安装插件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<p>修改根目录下的配置文件_config.yml。找到<code>permalink: :year/:month/:day/:title/</code>这一行，将其改为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">archives/:abbrlink.html</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在下面添加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 算法</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment"># 进制</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>参考：</strong></p>
 <p><a href="https://www.jianshu.com/p/81191bc2cb2d" target="_blank" rel="noopener">记录hexo无法加载图片及修改yilia主题组件</a></p>
 <p><a href="https://blog.csdn.net/lynnbest/article/details/79845944" target="_blank" rel="noopener">Hexo yilia 主题一揽子使用方案</a></p>
 <p><a href="https://blog.csdn.net/dta0502/article/details/89607895?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">Hexo-Yilia进阶笔记</a></p>
+<p><a href="https://blog.csdn.net/qq_40922859/article/details/97035497?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6" target="_blank" rel="noopener">Yilia主题优化(统计、评论、目录、一言、爱心效果、、、)</a></p>
 
       
 
