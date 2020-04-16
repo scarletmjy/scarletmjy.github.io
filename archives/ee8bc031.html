@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="Scarlet&#39;s Homepage">
 <meta property="og:description" content="背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/archives/undefined/1.png">
-<meta property="og:image" content="http://yoursite.com/archives/undefined/2.png">
+<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/1.png">
+<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/2.png">
 <meta property="article:published_time" content="2020-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-07T04:35:15.087Z">
+<meta property="article:modified_time" content="2020-04-07T04:35:31.529Z">
 <meta property="article:author" content="Scarlet">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/archives/undefined/1.png">
+<meta name="twitter:image" content="http://yoursite.com/archives/ee8bc031/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Scarlet&#39;s Homepage" type="application/atom+xml">
   
@@ -188,7 +188,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
 
 <p>生成rsa密钥对。如果一路回车的话，密钥会存放在<code>C:\Users\&lt;用户名&gt;\.ssh</code>目录下，如图所示，红框框选中的id_rsa.pub就是生成的公钥，我们后面需要用到，它上面没有后缀的文件是私钥：</p>
-<center><img src="/archives/undefined/1.png" class=""></center>
+<center><img src="/archives/ee8bc031/1.png" class=""></center>
 2. 将公钥发送至跳板机，命令格式为：
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</span><br></pre></td></tr></table></figure>
@@ -202,7 +202,7 @@
 <li>之后用chmod命令将authorized_keys的权限改为600，.ssh文件夹的权限改为700</li>
 <li>最后本地机尝试登录跳板机，成功！</li>
 </ol>
-<center><img src="/archives/undefined/2.png" class=""></center>
+<center><img src="/archives/ee8bc031/2.png" class=""></center>
 ### 设置SSH隧道
 
 <ol>
@@ -543,7 +543,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>还没有友链，基友召集中！</a>
+              <a href="https://www.higgs.xyz/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>禾奈学长的blog</a>
             </li>
           
         </ul>
