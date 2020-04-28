@@ -6,23 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>通过跳板机连接内网服务器 | Scarlet&#39;s Homepage</title>
+  <title>运行java web项目时遇到的问题及解决方法 | Scarlet&#39;s Homepage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~">
+  <meta name="description" content="最近在elipse运行java web项目的时候踩了不少坑，在此记录一下~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="通过跳板机连接内网服务器">
-<meta property="og:url" content="http://yoursite.com/archives/ee8bc031.html">
+<meta property="og:title" content="运行java web项目时遇到的问题及解决方法">
+<meta property="og:url" content="http://yoursite.com/archives/39560503.html">
 <meta property="og:site_name" content="Scarlet&#39;s Homepage">
-<meta property="og:description" content="背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~">
+<meta property="og:description" content="最近在elipse运行java web项目的时候踩了不少坑，在此记录一下~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/1.png">
-<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/2.png">
-<meta property="article:published_time" content="2020-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-28T08:59:19.746Z">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/1.png">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/2.png">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/3.png">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/4.png">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/5.png">
+<meta property="og:image" content="http://yoursite.com/archives/undefined/6.png">
+<meta property="article:published_time" content="2020-02-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-28T09:06:57.630Z">
 <meta property="article:author" content="Scarlet">
-<meta property="article:tag" content="网络">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/archives/ee8bc031/1.png">
+<meta name="twitter:image" content="http://yoursite.com/archives/undefined/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Scarlet&#39;s Homepage" type="application/atom+xml">
   
@@ -154,61 +158,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-通过跳板机连接内网服务器" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-运行java web项目时遇到的问题及解决" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      通过跳板机连接内网服务器
+      运行java web项目时遇到的问题及解决方法
     </h1>
   
 
         
-        <a href="/archives/ee8bc031.html" class="archive-article-date">
-  	<time datetime="2020-02-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-17</time>
+        <a href="/archives/39560503.html" class="archive-article-date">
+  	<time datetime="2020-02-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~</p>
+        <p>最近在elipse运行java web项目的时候踩了不少坑，在此记录一下~</p>
 <a id="more"></a>
 
-<p>设备信息如下：</p>
-<ul>
-<li>本地机系统：win10</li>
-<li>跳板机系统：centos7</li>
-</ul>
-<h3 id="配置免密登录Linux跳板机"><a href="#配置免密登录Linux跳板机" class="headerlink" title="配置免密登录Linux跳板机"></a>配置免密登录Linux跳板机</h3><p>1.在本地机的cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<p><strong>配置信息</strong>：</p>
+<p>OS：win10</p>
+<p>IDE：Eclipse Oxygen.3 Release (4.7.3)</p>
+<p>Server：xampp集成框架里的tomcat7</p>
+<h3 id="问题1：端口占用"><a href="#问题1：端口占用" class="headerlink" title="问题1：端口占用"></a>问题1：端口占用</h3><p>在Eclipse里新建了一个Web项目，然而在启动tomcat7.0服务器的时候显示端口被占用。原因是我先在xampp的控制台上开启了tomcat服务器，导致端口被占用。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>在xampp控制台中关闭tomcat服务器。</p>
+<h3 id="问题2：缺少ARP库"><a href="#问题2：缺少ARP库" class="headerlink" title="问题2：缺少ARP库"></a>问题2：缺少ARP库</h3><p>在eclipse中重新开启服务器，又显示错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.7.0_45\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;...(以下都是环境变量)</span><br></pre></td></tr></table></figure>
 
-<p>生成rsa密钥对。如果一路回车的话，密钥会存放在<code>C:\Users\&lt;用户名&gt;\.ssh</code>目录下，如图所示，红框框选中的id_rsa.pub就是生成的公钥，我们后面需要用到，它上面没有后缀的文件是私钥：</p>
-<center><img src="/archives/ee8bc031/1.png" class=""></center>
-2.将公钥发送至跳板机，命令格式为：
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>3.登录跳板机，然后cd到~/.ssh目录下，新建文件：authorized_keys（之前创建过就不需要了），然后将刚才传上来的公钥导入这个文件里，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">touch authorized_keys</span><br><span class="line">cat windows_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p>4.之后用chmod命令将authorized_keys的权限改为600，.ssh文件夹的权限改为700</p>
-<p>5.最后本地机尝试登录跳板机，成功！</p>
-<center><img src="/archives/ee8bc031/2.png" class=""></center>
-
-
-<h3 id="设置SSH隧道"><a href="#设置SSH隧道" class="headerlink" title="设置SSH隧道"></a>设置SSH隧道</h3><p>1.在本地cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L 6000:&lt;内网服务器ip&gt;:22 -p &lt;跳板机端口22&gt; username@&lt;跳板机ip&gt; -o TCPKeepAlive=yes</span><br></pre></td></tr></table></figure>
-
-<p>2.隧道打开之后，新打开一个cmd，首次连接输入<code>ssh -v -p 6000 &lt;内网服务器用户名&gt;@localhost</code>，然后输入yes（如果不是首次连接，可以去掉-v参数），就可以进入服务器玩耍了！</p>
-<p>参考：</p>
-<ol>
-<li><a href="https://blog.csdn.net/qq_40451749/article/details/89348799" target="_blank" rel="noopener">windows配置免密登录linux</a></li>
-<li><a href="https://blog.csdn.net/huangbx_tx/article/details/93339715" target="_blank" rel="noopener">ssh隧道解决pycharm跨过跳板机连接服务器问题</a></li>
+<p>原因是缺少tomcat推荐使用apache的APR库。</p>
+<h4 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h4><ol>
+<li>进入页面：<a href="http://archive.apache.org/dist/tomcat/tomcat-connectors/native" target="_blank" rel="noopener">http://archive.apache.org/dist/tomcat/tomcat-connectors/native</a></li>
+<li>我用的是tomcat7，所以选择1.1.33版本</li>
 </ol>
+<center><img src="/archives/undefined/1.png" class=""></center>
+3. 选择binaries
 
+<center><img src="/archives/undefined/2.png" class=""></center>
+4. 选择框出来的压缩包，点击下载到本地
+
+<center><img src="/archives/undefined/3.png" class=""></center>
+5. 在本地解压缩，然后进入该文件夹下的`bin\x64`目录，将文件`tcnative-1.dll`复制到`C:\WINDOWS\system32`中（如果是32位电脑，复制bin目录下的`tcnative-1.dll`文件即可）
+
+<center><img src="/archives/undefined/4.png" class=""></center>
+
+
+<h3 id="问题3：部署路径错误"><a href="#问题3：部署路径错误" class="headerlink" title="问题3：部署路径错误"></a>问题3：部署路径错误</h3><p>重新启动服务器，又又报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.IllegalArgumentException: Document base D:\javaee\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\testWeb does not exist or is not a readable directory</span><br></pre></td></tr></table></figure>
+
+<p>这次似乎是路径的问题。</p>
+<h4 id="解决方法-2"><a href="#解决方法-2" class="headerlink" title="解决方法"></a>解决方法</h4><p>直接右键服务器，点击clean即可。</p>
+<center><img src="/archives/undefined/5.png" class=""></center>
+再次启动，这次终于成功了。
+
+<center><img src="/archives/undefined/6.png" class=""></center>
       
 
       
@@ -242,7 +249,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
         		</li>
       		
 		</ul>
@@ -309,7 +316,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/archives/ee8bc031.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/archives/39560503.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -323,18 +330,18 @@
   
 <nav id="article-nav">
   
-    <a href="/archives/39560503.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/archives/f04dc526.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          运行java web项目时遇到的问题及解决方法
+          yilia主题配置方案（持续更新）
         
       </div>
     </a>
   
   
-    <a href="/archives/23a361ef.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">github+hexo搭建简易博客</div>
+    <a href="/archives/ee8bc031.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">通过跳板机连接内网服务器</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -361,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置免密登录Linux跳板机"><span class="toc-number">1.</span> <span class="toc-text">配置免密登录Linux跳板机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置SSH隧道"><span class="toc-number">2.</span> <span class="toc-text">设置SSH隧道</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1：端口占用"><span class="toc-number">1.</span> <span class="toc-text">问题1：端口占用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方法"><span class="toc-number">1.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2：缺少ARP库"><span class="toc-number">2.</span> <span class="toc-text">问题2：缺少ARP库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方法-1"><span class="toc-number">2.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3：部署路径错误"><span class="toc-number">3.</span> <span class="toc-text">问题3：部署路径错误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方法-2"><span class="toc-number">3.1.</span> <span class="toc-text">解决方法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
