@@ -6,23 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>通过跳板机连接内网服务器 | Scarlet&#39;s Homepage</title>
+  <title>Tag: python | Scarlet&#39;s Homepage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~">
-<meta property="og:type" content="article">
-<meta property="og:title" content="通过跳板机连接内网服务器">
-<meta property="og:url" content="http://yoursite.com/archives/ee8bc031.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Scarlet&#39;s Homepage">
+<meta property="og:url" content="http://yoursite.com/tags/python/index.html">
 <meta property="og:site_name" content="Scarlet&#39;s Homepage">
-<meta property="og:description" content="背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/1.png">
-<meta property="og:image" content="http://yoursite.com/archives/ee8bc031/2.png">
-<meta property="article:published_time" content="2020-02-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-28T08:59:19.746Z">
 <meta property="article:author" content="Scarlet">
-<meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/archives/ee8bc031/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Scarlet&#39;s Homepage" type="application/atom+xml">
   
@@ -154,233 +146,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-通过跳板机连接内网服务器" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      通过跳板机连接内网服务器
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/archives/cd12b808.html" class="archive-article-date">
+  	<time datetime="2020-05-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/archives/cd12b808.html">【OpenJudge】NOI-二分查找-5：派</a>
     </h1>
   
 
-        
-        <a href="/archives/ee8bc031.html" class="archive-article-date">
-  	<time datetime="2020-02-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景：寒假宅在家想做点东西，需要用到学校里的GPU服务器，然而服务器的IP地址是内网IP，在家无法直接访问。正好学校里的另一台服务器有公网IP，所以打算将此服务器作为跳板机，从而访问内网服务器~</p>
-<a id="more"></a>
-
-<p>设备信息如下：</p>
-<ul>
-<li>本地机系统：win10</li>
-<li>跳板机系统：centos7</li>
-</ul>
-<h3 id="配置免密登录Linux跳板机"><a href="#配置免密登录Linux跳板机" class="headerlink" title="配置免密登录Linux跳板机"></a>配置免密登录Linux跳板机</h3><p>1.在本地机的cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<p>生成rsa密钥对。如果一路回车的话，密钥会存放在<code>C:\Users\&lt;用户名&gt;\.ssh</code>目录下，如图所示，红框框选中的id_rsa.pub就是生成的公钥，我们后面需要用到，它上面没有后缀的文件是私钥：</p>
-<center><img src="/archives/ee8bc031/1.png" class=""></center>
-2.将公钥发送至跳板机，命令格式为：
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>3.登录跳板机，然后cd到~/.ssh目录下，新建文件：authorized_keys（之前创建过就不需要了），然后将刚才传上来的公钥导入这个文件里，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">touch authorized_keys</span><br><span class="line">cat windows_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p>4.之后用chmod命令将authorized_keys的权限改为600，.ssh文件夹的权限改为700</p>
-<p>5.最后本地机尝试登录跳板机，成功！</p>
-<center><img src="/archives/ee8bc031/2.png" class=""></center>
-
-
-<h3 id="设置SSH隧道"><a href="#设置SSH隧道" class="headerlink" title="设置SSH隧道"></a>设置SSH隧道</h3><p>1.在本地cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L 6000:&lt;内网服务器ip&gt;:22 -p &lt;跳板机端口22&gt; username@&lt;跳板机ip&gt; -o TCPKeepAlive=yes</span><br></pre></td></tr></table></figure>
-
-<p>2.隧道打开之后，新打开一个cmd，首次连接输入<code>ssh -v -p 6000 &lt;内网服务器用户名&gt;@localhost</code>，然后输入yes（如果不是首次连接，可以去掉-v参数），就可以进入服务器玩耍了！</p>
-<p>参考：</p>
-<ol>
-<li><a href="https://blog.csdn.net/qq_40451749/article/details/89348799" target="_blank" rel="noopener">windows配置免密登录linux</a></li>
-<li><a href="https://blog.csdn.net/huangbx_tx/article/details/93339715" target="_blank" rel="noopener">ssh隧道解决pycharm跨过跳板机连接服务器问题</a></li>
-</ol>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二分法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/技术//" class="article-tag-list-link color3">技术</a>
+        			<a href="/categories/算法//" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/archives/ee8bc031.html" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/archives/39560503.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          运行java web项目时遇到的问题及解决方法
-        
-      </div>
-    </a>
   
   
-    <a href="/archives/23a361ef.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">github+hexo搭建简易博客</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置免密登录Linux跳板机"><span class="toc-number">1.</span> <span class="toc-text">配置免密登录Linux跳板机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置SSH隧道"><span class="toc-number">2.</span> <span class="toc-text">设置SSH隧道</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -403,9 +237,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
