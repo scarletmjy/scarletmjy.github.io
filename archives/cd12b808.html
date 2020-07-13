@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【OpenJudge】NOI-二分查找-5：派 | Scarlet&#39;s Homepage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="描述我的生日要到了！根据习俗，我需要将一些派分给大家。我有N个不同口味、不同大小的派。有F个朋友会来参加我的派对，每个人会拿到一块派（必须一个派的一块，不能由几个派的小块拼成；可以是一整个派）。 我的朋友们都特别小气，如果有人拿到更大的一块，就会开始抱怨。因此所有人拿到的派是同样大小的（但不需要是同样形状的），虽然这样有些派会被浪费，但总比搞砸整个派对好。当然，我也要给自己留一块，而这一块也要和其">
+  <meta name="description" content="二分查找经典题目。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【OpenJudge】NOI-二分查找-5：派">
 <meta property="og:url" content="http://yoursite.com/archives/cd12b808.html">
 <meta property="og:site_name" content="Scarlet&#39;s Homepage">
-<meta property="og:description" content="描述我的生日要到了！根据习俗，我需要将一些派分给大家。我有N个不同口味、不同大小的派。有F个朋友会来参加我的派对，每个人会拿到一块派（必须一个派的一块，不能由几个派的小块拼成；可以是一整个派）。 我的朋友们都特别小气，如果有人拿到更大的一块，就会开始抱怨。因此所有人拿到的派是同样大小的（但不需要是同样形状的），虽然这样有些派会被浪费，但总比搞砸整个派对好。当然，我也要给自己留一块，而这一块也要和其">
+<meta property="og:description" content="二分查找经典题目。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-14T15:00:22.090Z">
+<meta property="article:modified_time" content="2020-07-13T01:33:06.790Z">
 <meta property="article:author" content="Scarlet">
 <meta property="article:tag" content="二分法">
 <meta property="article:tag" content="python">
@@ -164,11 +164,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>我的生日要到了！根据习俗，我需要将一些派分给大家。我有N个不同口味、不同大小的派。有F个朋友会来参加我的派对，每个人会拿到一块派（必须一个派的一块，不能由几个派的小块拼成；可以是一整个派）。</p>
-<p>我的朋友们都特别小气，如果有人拿到更大的一块，就会开始抱怨。因此所有人拿到的派是同样大小的（但不需要是同样形状的），虽然这样有些派会被浪费，但总比搞砸整个派对好。当然，我也要给自己留一块，而这一块也要和其他人的同样大小。</p>
-<p>请问我们每个人拿到的派最大是多少？每个派都是一个高为1，半径不等的圆柱体。</p>
+        <p>二分查找经典题目。</p>
 <a id="more"></a>
 
+<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>我的生日要到了！根据习俗，我需要将一些派分给大家。我有N个不同口味、不同大小的派。有F个朋友会来参加我的派对，每个人会拿到一块派（必须一个派的一块，不能由几个派的小块拼成；可以是一整个派）。</p>
+<p>我的朋友们都特别小气，如果有人拿到更大的一块，就会开始抱怨。因此所有人拿到的派是同样大小的（但不需要是同样形状的），虽然这样有些派会被浪费，但总比搞砸整个派对好。当然，我也要给自己留一块，而这一块也要和其他人的同样大小。</p>
+<p>请问我们每个人拿到的派最大是多少？每个派都是一个高为1，半径不等的圆柱体。</p>
 <h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行包含两个正整数N和F，1 ≤ N, F ≤ 10 000，表示派的数量和朋友的数量。<br>第二行包含N个1到10000之间的整数，表示每个派的半径。</p>
 <h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>输出每个人能得到的最大的派的体积，精确到小数点后三位。</p>
 <h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">4 3 3</span><br></pre></td></tr></table></figure>
@@ -180,7 +181,7 @@
 
 
 <p>WA数次之后发现是精度问题。AC代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">pai=[]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(x,n)</span>:</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        ans+=pai[i]//x</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    n,f = map(int,input().split())</span><br><span class="line">    f += <span class="number">1</span></span><br><span class="line">    pai=list(map(int,input().split()))</span><br><span class="line">    low=<span class="number">0</span></span><br><span class="line">    high=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        pai[i]=math.pi*pai[i]*pai[i]</span><br><span class="line">        <span class="keyword">if</span> pai[i]&gt;high:</span><br><span class="line">            high=pai[i]</span><br><span class="line">    <span class="keyword">while</span>(abs(high-low)&gt;=<span class="number">1e-5</span>): </span><br><span class="line">        mid = (high+low)/<span class="number">2</span></span><br><span class="line">        num = cal(mid,n)    <span class="comment">#计算派的个数</span></span><br><span class="line">        <span class="keyword">if</span> num&gt;=f:</span><br><span class="line">            low=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high=mid</span><br><span class="line">    print(<span class="string">'%.3f'</span> % high)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">pai=[]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(x,n)</span>:</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        ans+=pai[i]//x</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    n,f = map(int,input().split())</span><br><span class="line">    f += <span class="number">1</span></span><br><span class="line">    pai=list(map(int,input().split()))</span><br><span class="line">    low=<span class="number">0</span></span><br><span class="line">    high=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        pai[i]=math.pi*pai[i]*pai[i]</span><br><span class="line">        <span class="keyword">if</span> pai[i]&gt;high:</span><br><span class="line">            high=pai[i]</span><br><span class="line">    <span class="keyword">while</span>(abs(high-low)&gt;=<span class="number">1e-5</span>): </span><br><span class="line">        mid = low+(high-low)/<span class="number">2</span> 	</span><br><span class="line">        num = cal(mid,n)    	<span class="comment">#计算派的个数</span></span><br><span class="line">        <span class="keyword">if</span> num&gt;=f:</span><br><span class="line">            low=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high=mid</span><br><span class="line">    print(<span class="string">'%.3f'</span> % high)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -279,6 +280,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/archives/e3cfdb9.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          操作系统主要知识点梳理
+        
+      </div>
+    </a>
   
   
     <a href="/archives/f04dc526.html" id="article-nav-older" class="article-nav-link-wrap">
@@ -479,6 +489,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OS</a>
               </li>
             
             <div class="clearfix"></div>
