@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      636 字
+      645 字
     </span>
   
 
@@ -234,53 +234,60 @@
 <center><img src="/archives/23a361ef/1.png" srcset="/img/loading.gif" class=""></center>
 
 <h3 id="2-软件以及包安装"><a href="#2-软件以及包安装" class="headerlink" title="2. 软件以及包安装"></a>2. 软件以及包安装</h3><ul>
-<li>在本地主机安装nodejs：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a>  </li>
-<li>安装git：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>  </li>
-<li>打开命令行或git bash，安装hexo:  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<li>在本地主机安装nodejs：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a>  </li>
+<li>安装git：<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a>  </li>
+<li>打开命令行或git bash，安装hexo:  <pre><code class="hljs shell">npm install hexo-cli -g</code></pre>
 安装完成之后，可以使用<code>hexo -v</code> 命令检查是否安装成功  </li>
-<li>由于hexo官方源在国外，下载速度较慢，可以先安装cnpm，然后用cnpm命令进行安装：  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<li>由于hexo官方源在国外，下载速度较慢，可以先安装cnpm，然后用cnpm命令进行安装：  <pre><code class="hljs shell">npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre>
 
 
 </li>
 </ul>
 <h3 id="3-初始化hexo"><a href="#3-初始化hexo" class="headerlink" title="3. 初始化hexo"></a>3. 初始化hexo</h3><p>新建一个文件夹，该文件夹将作为博客专用文件夹。cd到新建的文件夹目录下，输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo init</code></pre>
 <p>接着输入下面的指令，自动安装需要的组件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">cnpm install</code></pre>
 <p>初始化完成后，会有一个默认主题以及一个hello-word的默认文章。可以先生成博客来看一下效果，运行命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate #可以简写成 hexo g</span><br><span class="line">hexo server   #可以简写成 hexo s</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo generate #可以简写成 hexo g
+hexo server   #可以简写成 hexo s</code></pre>
 <p>然后打开浏览器，在地址栏中输入<code>http://localhost:4000</code> 查看博客    </p>
 <center><img src="/archives/23a361ef/3.png" srcset="/img/loading.gif" class=""></center>
 
 <h3 id="4-安装新的主题"><a href="#4-安装新的主题" class="headerlink" title="4. 安装新的主题"></a>4. 安装新的主题</h3><p>输入命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean #清理缓存</span><br><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo clean #清理缓存
+git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></pre>
 <p>安装完成之后，修改文件_config.yml的theme为新的主题名称：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">theme:</span> <span class="hljs-string">yilia</span></code></pre>
 <p>然后<code>hexo s</code>启动服务器，可以查看新主题长啥样。 </p>
 <h3 id="5-配置ssh"><a href="#5-配置ssh" class="headerlink" title="5. 配置ssh"></a>5. 配置ssh</h3><p>git bash中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "your github email address"</span><br></pre></td></tr></table></figure>
-<p>回车3次，生成密钥之后打开C:\Users\用户名.ssh\id_rsa.pub，复制，然后打开github，打开github的settings界面，点击SSH and GPG keys，然后添加SSH key，将刚才复制的内容粘贴到输入框中。  </p>
+<pre><code class="hljs shell">ssh-keygen -t rsa -C &quot;your github email address&quot;</code></pre>
+<p>回车3次，生成密钥之后打开C:\Users\用户名\.ssh\id_rsa.pub，复制，然后打开github，打开github的settings界面，点击SSH and GPG keys，然后添加SSH key，将刚才复制的内容粘贴到输入框中。  </p>
 <center><img src="/archives/23a361ef/5.png" srcset="/img/loading.gif" class=""></center>
 测试一下设置是否成功。在git bash中输入:
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">ssh -T git@github.com</code></pre>
 <p>然后输入yes，显示成功信息：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added 'github.com,52.74.223.119' (RSA) to the list of known hosts.</span><br><span class="line">Hi scarletmjy! You've successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">Warning: Permanently added &#x27;github.com,52.74.223.119&#x27; (RSA) to the list of known hosts.
+Hi scarletmjy! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
 
 
 <h3 id="6-远程部署配置"><a href="#6-远程部署配置" class="headerlink" title="6. 远程部署配置"></a>6. 远程部署配置</h3><p>打开_config.yml，找到deploy，并在该位置键入：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">repo:</span> <span class="string">git@github.com:username/username.github.io.git</span></span><br><span class="line"><span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">deploy:</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+<span class="hljs-attr">repo:</span> <span class="hljs-string">git@github.com:username/username.github.io.git</span>
+<span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre>
 <p>安装远程deploy的工具:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">npm install hexo-deployer-git --save</code></pre>
 <p>使用命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate #hexo g</span><br><span class="line">hexo deploy   #hexo d</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo generate #hexo g
+hexo deploy   #hexo d</code></pre>
 <p>将项目push到github上。<br>或者直接使用复合命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-<p>然后打开链接：<a href="https://your_username.github.io，就可以看到刚刚部署的博客啦。" target="_blank" rel="noopener">https://your_username.github.io，就可以看到刚刚部署的博客啦。</a>  </p>
-<p><strong>参考</strong>：<br><a href="https://www.jianshu.com/p/343934573342" target="_blank" rel="noopener">在windows下安装hexo</a></p>
-<p> <a href="https://zhuanlan.zhihu.com/p/24019875" target="_blank" rel="noopener">【超简单】Windows下使用GitHub + Hexo搭建技术博客</a></p>
-<p> <a href="https://blog.csdn.net/poem_of_sunshine/article/details/29369785" target="_blank" rel="noopener">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
-<p> <a href="https://hexo.io/docs" target="_blank" rel="noopener">hexo官方文档</a></p>
+<pre><code class="hljs shell">hexo d -g</code></pre>
+<p>然后打开链接：<a target="_blank" rel="noopener" href="https://your_username.github.io,就可以看到刚刚部署的博客啦./">https://your_username.github.io，就可以看到刚刚部署的博客啦。</a>  </p>
+<p><strong>参考</strong>：<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/343934573342">在windows下安装hexo</a></p>
+<p> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24019875">【超简单】Windows下使用GitHub + Hexo搭建技术博客</a></p>
+<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/poem_of_sunshine/article/details/29369785">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></p>
+<p> <a target="_blank" rel="noopener" href="https://hexo.io/docs">hexo官方文档</a></p>
 
             </div>
             <hr>
