@@ -151,6 +151,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery/">
+                <i class="iconfont icon-link-fill"></i>
+                gallery
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -196,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      460 字
+      462 字
     </span>
   
 
@@ -248,16 +260,18 @@
 <li>跳板机系统：centos7</li>
 </ul>
 <h3 id="配置免密登录Linux跳板机"><a href="#配置免密登录Linux跳板机" class="headerlink" title="配置免密登录Linux跳板机"></a>配置免密登录Linux跳板机</h3><p>1.在本地机的cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">ssh-keygen</code></pre>
 
 <p>生成rsa密钥对。如果一路回车的话，密钥会存放在<code>C:\Users\&lt;用户名&gt;\.ssh</code>目录下，如图所示，红框框选中的id_rsa.pub就是生成的公钥，我们后面需要用到，它上面没有后缀的文件是私钥：</p>
 <center><img src="/archives/ee8bc031/1.png" srcset="/img/loading.gif" class=""></center>
 2.将公钥发送至跳板机，命令格式为：
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">scp ./id_rsa.pub &lt;跳板机用户名&gt;@&lt;跳板机IP&gt;:~/.ssh/windows_rsa.pub</code></pre>
 
 <p>3.登录跳板机，然后cd到~/.ssh目录下，新建文件：authorized_keys（之前创建过就不需要了），然后将刚才传上来的公钥导入这个文件里，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">touch authorized_keys</span><br><span class="line">cat windows_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ~/.ssh
+touch authorized_keys
+cat windows_rsa.pub &gt;&gt; authorized_keys</code></pre>
 
 <p>4.之后用chmod命令将authorized_keys的权限改为600，.ssh文件夹的权限改为700</p>
 <p>5.最后本地机尝试登录跳板机，成功！</p>
@@ -265,13 +279,13 @@
 
 
 <h3 id="设置SSH隧道"><a href="#设置SSH隧道" class="headerlink" title="设置SSH隧道"></a>设置SSH隧道</h3><p>1.在本地cmd中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -N -f -L 6000:&lt;内网服务器ip&gt;:22 -p &lt;跳板机端口22&gt; username@&lt;跳板机ip&gt; -o TCPKeepAlive=yes</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">ssh -N -f -L 6000:&lt;内网服务器ip&gt;:22 -p &lt;跳板机端口22&gt; username@&lt;跳板机ip&gt; -o TCPKeepAlive=yes</code></pre>
 
 <p>2.隧道打开之后，新打开一个cmd，首次连接输入<code>ssh -v -p 6000 &lt;内网服务器用户名&gt;@localhost</code>，然后输入yes（如果不是首次连接，可以去掉-v参数），就可以进入服务器玩耍了！</p>
 <p>参考：</p>
 <ol>
-<li><a href="https://blog.csdn.net/qq_40451749/article/details/89348799" target="_blank" rel="noopener">windows配置免密登录linux</a></li>
-<li><a href="https://blog.csdn.net/huangbx_tx/article/details/93339715" target="_blank" rel="noopener">ssh隧道解决pycharm跨过跳板机连接服务器问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40451749/article/details/89348799">windows配置免密登录linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangbx_tx/article/details/93339715">ssh隧道解决pycharm跨过跳板机连接服务器问题</a></li>
 </ol>
 
             </div>

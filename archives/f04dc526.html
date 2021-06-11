@@ -151,6 +151,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery/">
+                <i class="iconfont icon-link-fill"></i>
+                gallery
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -244,48 +256,145 @@
 
 <h3 id="1-头像-amp-amp-网页图标等图像设置"><a href="#1-头像-amp-amp-网页图标等图像设置" class="headerlink" title="1. 头像&amp;&amp;网页图标等图像设置"></a>1. 头像&amp;&amp;网页图标等图像设置</h3><p>在 <code>themes/yilia/source/</code> 路径下，添加一个 <code>assets</code> 文件夹，里面存放各种资源。我把图像资源放在<code>img</code>文件夹中。</p>
 <p>在 <code>themes/yilia/_config.yml</code>文件中，做如下修改：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wx、zfb二维码图片</span></span><br><span class="line"><span class="attr">weixin:</span>  <span class="string">/assets/img/[image</span> <span class="string">name].png</span></span><br><span class="line"><span class="attr">alipay:</span>  <span class="string">/assets/img/[image</span> <span class="string">name].png</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 头像图片</span></span><br><span class="line"><span class="attr">avatar:</span>  <span class="string">/assets/img/[image</span> <span class="string">name].png</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网页图标</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="string">/assets/img/[image</span> <span class="string">name].png</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-comment"># wx、zfb二维码图片</span>
+<span class="hljs-attr">weixin:</span>  <span class="hljs-string">/assets/img/[image</span> <span class="hljs-string">name].png</span>
+<span class="hljs-attr">alipay:</span>  <span class="hljs-string">/assets/img/[image</span> <span class="hljs-string">name].png</span>
+
+<span class="hljs-comment"># 头像图片</span>
+<span class="hljs-attr">avatar:</span>  <span class="hljs-string">/assets/img/[image</span> <span class="hljs-string">name].png</span>
+
+<span class="hljs-comment"># 网页图标</span>
+<span class="hljs-attr">favicon:</span> <span class="hljs-string">/assets/img/[image</span> <span class="hljs-string">name].png</span></code></pre>
 
 
 
 <h3 id="2-博文中插入图片"><a href="#2-博文中插入图片" class="headerlink" title="2. 博文中插入图片"></a>2. 博文中插入图片</h3><p>比较奇怪的是插入图片的markdown语法在这里不起作用，图片加载不出来。几番搜索之后终于找到了解决方案：</p>
 <p>首先找到项目根目录的<code>_config.yml</code>文件,修改post_asset_folder为true：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">post_asset_folder:</span> <span class="hljs-literal">true</span></code></pre>
 
 <p>接着在命令行cd到博客项目所在文件夹下，输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n 博客名 #或hexo new</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo n 博客名 #或hexo new</code></pre>
 
 <p>该命令会生成一个markdown文件和同名的文件夹，我们只需要将图片放进文件夹里，然后在md文件里使用下面的语句来插入图片即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs undefined">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</code></pre>
 
 <p>然后hexo g生成文件hexo s启动服务，就可以看到图片了。<br>需要注意的是如果之前安装过hexo-asset-image，需要将其卸载：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs undefined">npm uninstall hexo-asset-image --save</code></pre>
 
 
 
 <h3 id="3-创建分类页面"><a href="#3-创建分类页面" class="headerlink" title="3. 创建分类页面"></a>3. 创建分类页面</h3><p>在命令行cd到博客项目所在文件夹下，输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">hexo new page categories</code></pre>
 
 <p>该命令将在<code>source</code>目录下生成一个<code>categories</code>文件夹，里面有一个index.md文件。修改该文件为：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">文章分类</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018</span><span class="number">-06</span><span class="number">-11</span> <span class="number">10</span><span class="string">:13:21</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">"categories"</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">文章分类</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2018-06-11 10:13:21</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">&quot;categories&quot;</span>
+<span class="hljs-attr">comments:</span> <span class="hljs-literal">false</span>
+<span class="hljs-meta">---</span></code></pre>
 
 <p>然后进行修改categories页面样式的操作。打开<code>yilia\source\main.0cf68a.css</code>，将下面的内容添加进去：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">category-all-page</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">30px</span> <span class="number">40px</span> <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="number">70vh</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-tag">h2</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-all-title</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-all</span> &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-item-list-item</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-item-list-count</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: $grey;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-item-list-count</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">" ("</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-item-list-count</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">") "</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-item</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-count</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: $grey;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-count</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">" ("</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-count</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">") "</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.category-all-page</span> <span class="selector-class">.category-list-child</span> &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">10px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs css"><span class="hljs-selector-tag">category-all-page</span> &#123;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">30px</span> <span class="hljs-number">40px</span> <span class="hljs-number">30px</span> <span class="hljs-number">40px</span>;
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">70vh</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-tag">h2</span> &#123;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> <span class="hljs-number">0</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-all-title</span> &#123;
+    <span class="hljs-attribute">text-align</span>: center;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-all</span> &#123;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list</span> &#123;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">list-style</span>: none;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-item-list-item</span> &#123;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">15px</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-item-list-count</span> &#123;
+    <span class="hljs-attribute">color</span>: $grey;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-item-list-count</span><span class="hljs-selector-pseudo">:before</span> &#123;
+    <span class="hljs-attribute">display</span>: inline;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; (&quot;</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-item-list-count</span><span class="hljs-selector-pseudo">:after</span> &#123;
+    <span class="hljs-attribute">display</span>: inline;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;) &quot;</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-item</span> &#123;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">10px</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-count</span> &#123;
+    <span class="hljs-attribute">color</span>: $grey;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-count</span><span class="hljs-selector-pseudo">:before</span> &#123;
+    <span class="hljs-attribute">display</span>: inline;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; (&quot;</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-count</span><span class="hljs-selector-pseudo">:after</span> &#123;
+    <span class="hljs-attribute">display</span>: inline;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;) &quot;</span>;
+  &#125;
+  <span class="hljs-selector-class">.category-all-page</span> <span class="hljs-selector-class">.category-list-child</span> &#123;
+    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">10px</span>;
+  &#125;
+</code></pre>
 
 <p>设置ejs。新建<code>yilia/layout/categories.ejs</code>，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;article class&#x3D;&quot;article article-type-post show&quot;&gt;</span><br><span class="line">  &lt;header class&#x3D;&quot;article-header&quot; style&#x3D;&quot;border-bottom: 1px solid #ccc&quot;&gt;</span><br><span class="line">  &lt;h1 class&#x3D;&quot;article-title&quot; itemprop&#x3D;&quot;name&quot;&gt;</span><br><span class="line">    &lt;%&#x3D; page.title %&gt;</span><br><span class="line">  &lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;&#x2F;header&gt;</span><br><span class="line"></span><br><span class="line">  &lt;% if (site.categories.length)&#123; %&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;category-all-page&quot;&gt;</span><br><span class="line">    &lt;h2&gt;共计&amp;nbsp;&lt;%&#x3D; site.categories.length %&gt;&amp;nbsp;个分类&lt;&#x2F;h2&gt;</span><br><span class="line">    &lt;%- list_categories(site.categories, &#123;</span><br><span class="line">      show_count: true,</span><br><span class="line">      class: &#39;category-list-item&#39;,</span><br><span class="line">      style: &#39;list&#39;,</span><br><span class="line">      depth: 2,</span><br><span class="line">      separator: &#39;&#39;</span><br><span class="line">    &#125;) %&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br><span class="line">&lt;&#x2F;article&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs ejs">&lt;article class&#x3D;&quot;article article-type-post show&quot;&gt;
+  &lt;header class&#x3D;&quot;article-header&quot; style&#x3D;&quot;border-bottom: 1px solid #ccc&quot;&gt;
+  &lt;h1 class&#x3D;&quot;article-title&quot; itemprop&#x3D;&quot;name&quot;&gt;
+    &lt;%&#x3D; page.title %&gt;
+  &lt;&#x2F;h1&gt;
+  &lt;&#x2F;header&gt;
+
+  &lt;% if (site.categories.length)&#123; %&gt;
+  &lt;div class&#x3D;&quot;category-all-page&quot;&gt;
+    &lt;h2&gt;共计&amp;nbsp;&lt;%&#x3D; site.categories.length %&gt;&amp;nbsp;个分类&lt;&#x2F;h2&gt;
+    &lt;%- list_categories(site.categories, &#123;
+      show_count: true,
+      class: &#39;category-list-item&#39;,
+      style: &#39;list&#39;,
+      depth: 2,
+      separator: &#39;&#39;
+    &#125;) %&gt;
+  &lt;&#x2F;div&gt;
+  &lt;% &#125; %&gt;
+&lt;&#x2F;article&gt;
+</code></pre>
 
 <p>至此分类功能设置完成，我们可以在每篇博文中设置categories属性，详情见第4部分。</p>
 <h3 id="4-设置博文信息"><a href="#4-设置博文信息" class="headerlink" title="4. 设置博文信息"></a>4. 设置博文信息</h3><p>在对应的md文件中设置：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="attr">title:</span> <span class="string">postName</span>           <span class="comment">#文章名称，可以任意修改，不会出现在URL中</span></span><br><span class="line"><span class="attr">copyright:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">true</span>                 <span class="comment">#是否生成目录</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="number">-11</span><span class="number">-11</span> <span class="number">15</span><span class="string">:30:16</span> <span class="comment">#文章生成时间</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">example</span>       <span class="comment">#文章分类</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">[tag1,tag2,tag3]</span>    <span class="comment">#文章标签，可空，多标签请用格式，注意:后面有个空格</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"> <span class="string">文章摘要</span></span><br><span class="line"> <span class="string">&lt;!--</span> <span class="string">more</span> <span class="string">--&gt;</span></span><br><span class="line"> <span class="string">文章正文，主页面中不显示</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-meta">---</span>
+
+<span class="hljs-attr">title:</span> <span class="hljs-string">postName</span>           <span class="hljs-comment">#文章名称，可以任意修改，不会出现在URL中</span>
+<span class="hljs-attr">copyright:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">toc:</span> <span class="hljs-literal">true</span>                 <span class="hljs-comment">#是否生成目录</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020-11-11 15:30:16</span> <span class="hljs-comment">#文章生成时间</span>
+<span class="hljs-attr">categories:</span> <span class="hljs-string">example</span>       <span class="hljs-comment">#文章分类</span>
+<span class="hljs-attr">tags:</span> [<span class="hljs-string">tag1</span>,<span class="hljs-string">tag2</span>,<span class="hljs-string">tag3</span>]    <span class="hljs-comment">#文章标签，可空，多标签请用格式，注意:后面有个空格</span>
+<span class="hljs-meta">---</span>
+ <span class="hljs-string">文章摘要</span>
+ <span class="hljs-string">&lt;!--</span> <span class="hljs-string">more</span> <span class="hljs-string">--&gt;</span>
+ <span class="hljs-string">文章正文，主页面中不显示</span></code></pre>
 
 <p>显示文章摘要还需要注释掉下面的语句，在 <code>themes/yilia/_config.yml</code>文件中。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">excerpt_link:</span> <span class="string">more</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">excerpt_link:</span> <span class="hljs-string">more</span></code></pre>
 
 
 
 <h3 id="5-增加归档菜单，显示所有文章"><a href="#5-增加归档菜单，显示所有文章" class="headerlink" title="5. 增加归档菜单，显示所有文章"></a>5. 增加归档菜单，显示所有文章</h3><p>修改 <code>themes/yilia/_config.yml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">    主页:  &#x2F;</span><br><span class="line">    归档:  &#x2F;archives&#x2F;index.html</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs arcade">menu:
+    主页:  /
+    归档:  <span class="hljs-regexp">/archives/i</span>ndex.html</code></pre>
 
 
 
@@ -297,25 +406,29 @@
 ### 7. 显示文章目录
 
 <p>在 <code>themes/yilia/_config.ym</code>中，将toc的值改为2。这样就可以根据你的md文件里的标题自动生成目录了：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目录</span></span><br><span class="line"><span class="comment"># 目录设定：0-不显示目录； 1-文章对应的md文件里有toc:true属性，才有目录； 2-所有文章均显示目录</span></span><br><span class="line"><span class="attr">toc:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-comment"># 目录</span>
+<span class="hljs-comment"># 目录设定：0-不显示目录； 1-文章对应的md文件里有toc:true属性，才有目录； 2-所有文章均显示目录</span>
+<span class="hljs-attr">toc:</span> <span class="hljs-number">2</span></code></pre>
 
 
 
-<h3 id="8-添加Gitalk评论区"><a href="#8-添加Gitalk评论区" class="headerlink" title="8. 添加Gitalk评论区"></a>8. 添加Gitalk评论区</h3><p><a href="https://anyway1314.cn/post/2ee2703d.html" target="_blank" rel="noopener">参考博客</a></p>
+<h3 id="8-添加Gitalk评论区"><a href="#8-添加Gitalk评论区" class="headerlink" title="8. 添加Gitalk评论区"></a>8. 添加Gitalk评论区</h3><p><a target="_blank" rel="noopener" href="https://anyway1314.cn/post/2ee2703d.html">参考博客</a></p>
 <h3 id="9-文章URL加密"><a href="#9-文章URL加密" class="headerlink" title="9. 文章URL加密"></a>9. 文章URL加密</h3><p>用命令行安装插件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">npm install hexo-abbrlink --save</code></pre>
 
 <p>修改根目录下的配置文件_config.yml。找到<code>permalink: :year/:month/:day/:title/</code>这一行，将其改为：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">archives/:abbrlink.html</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">permalink:</span> <span class="hljs-string">archives/:abbrlink.html</span></code></pre>
 
 <p>然后在下面添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 算法</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment"># 进制</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yml"><span class="hljs-attr">abbrlink:</span>
+  <span class="hljs-attr">alg:</span> <span class="hljs-string">crc32</span>  <span class="hljs-comment"># 算法</span>
+  <span class="hljs-attr">rep:</span> <span class="hljs-string">hex</span>    <span class="hljs-comment"># 进制</span></code></pre>
 
 <p><strong>参考：</strong></p>
-<p><a href="https://www.jianshu.com/p/81191bc2cb2d" target="_blank" rel="noopener">记录hexo无法加载图片及修改yilia主题组件</a></p>
-<p><a href="https://blog.csdn.net/lynnbest/article/details/79845944" target="_blank" rel="noopener">Hexo yilia 主题一揽子使用方案</a></p>
-<p><a href="https://blog.csdn.net/dta0502/article/details/89607895?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener">Hexo-Yilia进阶笔记</a></p>
-<p><a href="https://blog.csdn.net/qq_40922859/article/details/97035497?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6" target="_blank" rel="noopener">Yilia主题优化(统计、评论、目录、一言、爱心效果、、、)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/81191bc2cb2d">记录hexo无法加载图片及修改yilia主题组件</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lynnbest/article/details/79845944">Hexo yilia 主题一揽子使用方案</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dta0502/article/details/89607895?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1">Hexo-Yilia进阶笔记</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40922859/article/details/97035497?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-6">Yilia主题优化(统计、评论、目录、一言、爱心效果、、、)</a></p>
 
             </div>
             <hr>

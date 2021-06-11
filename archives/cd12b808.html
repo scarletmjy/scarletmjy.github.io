@@ -151,6 +151,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery/">
+                <i class="iconfont icon-link-fill"></i>
+                gallery
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -196,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      431 字
+      438 字
     </span>
   
 
@@ -247,16 +259,42 @@
 <p>请问我们每个人拿到的派最大是多少？每个派都是一个高为1，半径不等的圆柱体。</p>
 <h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行包含两个正整数N和F，1 ≤ N, F ≤ 10 000，表示派的数量和朋友的数量。<br>第二行包含N个1到10000之间的整数，表示每个派的半径。</p>
 <h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>输出每个人能得到的最大的派的体积，精确到小数点后三位。</p>
-<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">4 3 3</span><br></pre></td></tr></table></figure>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><pre><code class="hljs basic"><span class="hljs-symbol">3 </span><span class="hljs-number">3</span>
+<span class="hljs-symbol">4 </span><span class="hljs-number">3</span> <span class="hljs-number">3</span></code></pre>
 
 
 
-<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25.133</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><pre><code class="hljs apache"><span class="hljs-attribute">25</span>.<span class="hljs-number">133</span></code></pre>
 
 
 
 <p>WA数次之后发现是精度问题。AC代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">pai=[]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(x,n)</span>:</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        ans+=pai[i]//x</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    n,f = map(int,input().split())</span><br><span class="line">    f += <span class="number">1</span></span><br><span class="line">    pai=list(map(int,input().split()))</span><br><span class="line">    low=<span class="number">0</span></span><br><span class="line">    high=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        pai[i]=math.pi*pai[i]*pai[i]</span><br><span class="line">        <span class="keyword">if</span> pai[i]&gt;high:</span><br><span class="line">            high=pai[i]</span><br><span class="line">    <span class="keyword">while</span>(abs(high-low)&gt;=<span class="number">1e-5</span>): </span><br><span class="line">        mid = low+(high-low)/<span class="number">2</span> 	</span><br><span class="line">        num = cal(mid,n)    	<span class="comment">#计算派的个数</span></span><br><span class="line">        <span class="keyword">if</span> num&gt;=f:</span><br><span class="line">            low=mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high=mid</span><br><span class="line">    print(<span class="string">'%.3f'</span> % high)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> math
+pai=[]
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cal</span>(<span class="hljs-params">x,n</span>):</span>
+    ans=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        ans+=pai[i]//x
+    <span class="hljs-keyword">return</span> ans
+<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:
+    n,f = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,<span class="hljs-built_in">input</span>().split())
+    f += <span class="hljs-number">1</span>
+    pai=<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>,<span class="hljs-built_in">input</span>().split()))
+    low=<span class="hljs-number">0</span>
+    high=<span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):
+        pai[i]=math.pi*pai[i]*pai[i]
+        <span class="hljs-keyword">if</span> pai[i]&gt;high:
+            high=pai[i]
+    <span class="hljs-keyword">while</span>(<span class="hljs-built_in">abs</span>(high-low)&gt;=<span class="hljs-number">1e-5</span>): 
+        mid = low+(high-low)/<span class="hljs-number">2</span> 	
+        num = cal(mid,n)    	<span class="hljs-comment">#计算派的个数</span>
+        <span class="hljs-keyword">if</span> num&gt;=f:
+            low=mid
+        <span class="hljs-keyword">else</span>:
+            high=mid
+    print(<span class="hljs-string">&#x27;%.3f&#x27;</span> % high)
+</code></pre>
 
 
             </div>
